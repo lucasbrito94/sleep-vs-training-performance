@@ -1,4 +1,5 @@
 # 💤📊 Sleep vs Training Performance
+
 **Analyzing the Relationship Between Sleep and Strength Training Performance**
 
 ---
@@ -9,7 +10,7 @@ This project combines two personal interests of mine: **data analysis and streng
 
 Sleep plays an important role in recovery and physical performance, but its relationship with day-to-day training performance is not always straightforward.
 
-The objective of this project is to investigate whether **sleep duration is associated with differences in strength training performance**, using real-world personal data collected from Apple Health and HEVY.
+The objective of this project is to investigate whether **sleep duration is associated with differences in strength training performance**, using real-world personal data collected from **Apple Health** and **HEVY**.
 
 The analysis focuses on three main training metrics:
 
@@ -17,7 +18,7 @@ The analysis focuses on three main training metrics:
 - Maximum weight lifted
 - Total number of sets
 
-The project also evaluates whether the relationship between sleep and training performance changes depending on the **type of workout performed**.
+The project also evaluates whether the relationship between sleep and training performance changes depending on the type of workout performed.
 
 The goal is not to establish a causal relationship, but to identify patterns and demonstrate how personal data can be transformed into analytical insights through a complete data workflow.
 
@@ -27,25 +28,28 @@ The goal is not to establish a causal relationship, but to identify patterns and
 
 ### 2.1 Apple Health — Sleep Data
 
-- Source: Apple Watch / Apple Health
-- Data type: Sleep sessions
-- Raw format: XML
-- Main metric:
-  - Total sleep duration per day (hours)
-- Processing:
-  - Sleep sessions were parsed and normalized using Python
-  - Multiple sleep sessions were aggregated into daily totals
+- **Source:** Apple Watch / Apple Health
+- **Data type:** Sleep sessions
+- **Raw format:** XML
+- **Main metric:** Total sleep duration per day (hours)
+
+**Processing:**
+
+- Sleep sessions were parsed and normalized using Python
+- Multiple sleep sessions were aggregated into daily totals
 
 ### 2.2 HEVY — Strength Training Data
 
-- Source: HEVY workout tracking app
-- Data type: Strength training logs
-- Raw format: CSV
-- Main metrics:
-  - Total training volume (weight × repetitions)
-  - Maximum weight lifted per workout day
-  - Total number of sets
-  - Training split
+- **Source:** HEVY workout tracking app
+- **Data type:** Strength training logs
+- **Raw format:** CSV
+
+**Main metrics:**
+
+- Total training volume (weight × repetitions)
+- Maximum weight lifted per workout day
+- Total number of sets
+- Training split
 
 Workout types were classified into groups such as:
 
@@ -70,8 +74,40 @@ Apple Health (XML) ──┐
                      ├── Python (ETL) → SQLite → SQL → CSV → Power BI
 HEVY (CSV) ──────────┘
 
+```
 
-```markdown
+- **Python** was used for data ingestion, parsing, cleaning and transformation.
+- **SQLite** was used for data storage and analytical querying.
+- **SQL** was used for aggregations, feature engineering and analysis.
+- **CSV** was used as the data interface between the analytical layer and Power BI.
+- **Power BI** was used for visualization and exploratory analysis.
+
+### 3.2 Feature Engineering
+
+The analysis includes:
+
+- Aggregation of sleep sessions into daily sleep duration
+- Categorization of sleep duration
+- Aggregation of workout data by day
+- Calculation of total training volume
+- Calculation of maximum weight lifted
+- Calculation of total sets
+- Classification of workouts into training splits
+
+### 3.3 Analytical Approach
+
+Training performance was analyzed using different levels of granularity:
+
+1. Broader sleep categories
+2. More granular sleep-duration ranges
+3. Separate analysis by training split
+
+Training splits were considered separately because absolute workload can differ substantially between workout types. Comparing raw training volume from different workout types directly can therefore be misleading.
+
+---
+
+## 4. Analysis & Key Findings
+
 ### 4.1 Sleep Duration vs Training Performance
 
 The analysis suggests that training performance was generally lower on training days preceded by shorter sleep.
@@ -88,9 +124,7 @@ The data therefore shows a noticeable difference between **low-sleep days and th
 
 However, the relationship is not perfectly linear, and the number of observations in some categories is relatively small.
 
-For this reason, the results should be interpreted as observed patterns within this dataset rather than as evidence that a specific number of hours of sleep universally produces better training performance.
-
----
+For this reason, the results should be interpreted as **observed patterns within this dataset**, rather than as evidence that a specific number of hours of sleep universally produces better training performance.
 
 ### 4.2 Sleep Duration Ranges
 
@@ -112,8 +146,6 @@ The 8–9 hour group showed the highest average volume, but it contained only 8 
 
 Therefore, the more defensible interpretation is that **short sleep was associated with lower average training performance in this dataset, while the relationship among higher sleep durations was less consistent**.
 
----
-
 ### 4.3 Impact of Sleep by Training Split
 
 Training type was analyzed separately because absolute training volume varies substantially between different workouts.
@@ -130,13 +162,9 @@ The analysis therefore considered training splits such as:
 
 The results suggest that the relationship between sleep and performance **can vary depending on the training session**.
 
-However, several training/sleep combinations contain relatively few observations. Therefore, these differences should be treated as exploratory patterns rather than statistically established effects.
-
-This highlights an important analytical principle:
+However, several training/sleep combinations contain relatively few observations. Therefore, these differences should be treated as **exploratory patterns rather than statistically established effects**.
 
 > **Context matters when comparing performance metrics.**
-
----
 
 ### 4.4 General Observations
 
@@ -152,8 +180,6 @@ The main observations from the analysis are:
 ---
 
 ## 5. Limitations
-
-This project has several important limitations.
 
 ### Single-Subject Dataset
 
@@ -241,6 +267,9 @@ sleep-strength/
 │   └── load_to_sqlite.py
 ├── .gitignore
 └── README.md
+```
+
+Raw personal data and the SQLite database are intentionally excluded from the public repository.
 
 ---
 
@@ -252,7 +281,7 @@ The project combines:
 
 **Data ingestion → ETL → Data modeling → SQL analysis → Feature engineering → Visualization → Interpretation**
 
-The analysis found a clear difference in average training performance between days preceded by shorter sleep and days with higher sleep duration.
+The analysis found a noticeable difference in average training performance between days preceded by shorter sleep and days with higher sleep duration.
 
 At the same time, the results demonstrate why data analysis requires context and methodological caution. Training type, sample size and uncontrolled variables can substantially affect the observed results.
 
