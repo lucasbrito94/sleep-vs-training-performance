@@ -178,8 +178,25 @@ The main observations from the analysis are:
 - The data supports further investigation rather than a universal conclusion about an "optimal" amount of sleep.
 
 ---
+## 5. Power BI Dashboard
 
-## 5. Limitations
+The following visualizations summarize the relationship between sleep duration and strength training performance.
+
+### 5.1 Average Training Volume by Sleep Category
+
+This visualization compares average training volume across different sleep categories.
+
+![Average Training Volume by Sleep Category](images/sleep_vs_volume.png)
+
+### 5.2 Training Volume by Workout Type and Sleep Category
+
+This visualization compares average training volume across different workout types and sleep categories.
+
+![Training Volume by Workout Type and Sleep Category](images/sleep_vs_volume_by_split.png)
+
+---
+
+## 6. Limitations
 
 ### Single-Subject Dataset
 
@@ -220,7 +237,7 @@ Although training splits were introduced to reduce this problem, other differenc
 
 ---
 
-## 6. Next Steps
+## 7. Next Steps
 
 Possible improvements for future versions of the project include:
 
@@ -239,7 +256,7 @@ A future version could also investigate whether **sleep consistency** is more st
 
 ---
 
-## 7. Tools & Technologies
+## 8. Tools & Technologies
 
 - Python
   - pandas
@@ -254,7 +271,7 @@ A future version could also investigate whether **sleep consistency** is more st
 
 ---
 
-## 8. Project Structure
+## 9. Project Structure
 
 ```text
 sleep-strength/
@@ -273,7 +290,7 @@ Raw personal data and the SQLite database are intentionally excluded from the pu
 
 ---
 
-## 9. Conclusion
+## 10. Conclusion
 
 This project demonstrates a complete data analytics workflow using real-world personal data.
 
@@ -302,7 +319,7 @@ The project also serves as a practical demonstration of skills in:
 
 ---
 
-## 10. Repository Notes
+## 11. Repository Notes
 
 The repository contains the analytical code and documentation required to understand the project workflow.
 
